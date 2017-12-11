@@ -1,2 +1,5 @@
 December 11 2017  
 I want to paste comment to source code without influencing git blame.  
+
+we can add tip like below  
+$git tip "comment comment comment"  

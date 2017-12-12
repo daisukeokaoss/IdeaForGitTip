@@ -7,3 +7,23 @@ $git tip "comment comment comment"
 December 12 2017  
 We must decide until when git tip continues and Who can commit or edit git tip  
 How to edit git tip.  
+
+command list
+$git comment init  
+initialize git comment and make folder of comment  
+
+$git comment append <filename> <linenumber>  "comment comment comment"  
+add comment to folder  
+and show hash of comment  
+
+$git comment delete <hashOfCommit>  
+delete comment  
+
+$git comment log  
+show all list of comment of this ripogitory  
+
+$git comment log <filename>  
+show all list of comment of specified filename  
+
+$git comment log <filename> <linenumber>  
+show all list of comment of specified filename and line number  

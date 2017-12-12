@@ -3,3 +3,7 @@ I want to paste comment to source code without influencing git blame.
 
 we can add tip like below  
 $git tip "comment comment comment"  
+
+December 12 2017  
+We must decide until when git tip continues and Who can commit or edit git tip  
+How to edit git tip.  

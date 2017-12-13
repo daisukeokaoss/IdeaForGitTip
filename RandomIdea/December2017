@@ -27,3 +27,68 @@ show all list of comment of specified filename
 
 $git comment log <filename> <linenumber>  
 show all list of comment of specified filename and line number  
+
+example source code are shown below  
+
+```
+#! /local/bin/env ruby
+# coding: utf-8
+
+require 'git'
+require 'fileutils'
+
+if ARGV.size == 0
+  STDERR.puts <<~EOS
+  usage:
+    comments.rb show
+    comments.rb append <comment>
+    comments.rb delete
+  EOS
+  exit 1
+end
+
+
+class Command
+  def initialize
+    @git = Git.open('./')
+    @comment_dir = "#{@git.dir}/.git/comments"
+    @target_sha = @git.object('HEAD').sha
+
+    FileUtils.mkdir_p @comment_dir
+  end
+
+  def target_path
+    "#{@comment_dir}/#{@target_sha}"
+  end
+
+  def open_if_exists(mode)
+    open(target_path, mode) do |f|
+      yield f
+    end
+  end
+
+  def show()
+    open_if_exists('r') do |f|
+      puts f.read
+    end
+  end
+
+  def append(message)
+    open_if_exists('a') do |f|
+      f.puts message
+    end
+  end
+
+  def delete()
+    File.rm target_path
+  end
+end
+
+command = Command.new
+
+case ARGV[0]
+when 'show' then command.show()
+when 'append' then command.append(ARGV[1])
+when 'delete' then command.delete()
+end
+```

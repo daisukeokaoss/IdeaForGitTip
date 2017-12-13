@@ -30,7 +30,9 @@ show all list of comment of specified filename and line number
 
 example source code are shown below  
 
-```
+
+
+```ruby  
 #! /local/bin/env ruby
 # coding: utf-8
 
